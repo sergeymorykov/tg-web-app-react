@@ -1,20 +1,14 @@
-import { useEffect } from 'react';
-import './App.css';
-const tg = window.Telegram.WebApp;
+import { useState } from "react";
+import Index from "./components/Index";
 
 function App() {
-  useEffect( () => {
-    tg.ready();
-  }, [])
+  const [isLoggedIn, setLoggedIn ] = useState(false);
 
-  const onClose = () => {
-    tg.close();
-  }
   return (
-    <div className="App">
-      work
-        <button onClick={onClose}> Выйти </button>
-    </div>
+    <>
+      <Index isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} />
+    </>
+
   );
 }
 
