@@ -17,7 +17,7 @@ import "./SignUp.css";
 const theme = createTheme();
 
 const interests = [
-  "Карьера, стартапы, поиск команды и нетворкинг", 
+    "Стартапы, поиск команды и нетворкинг", 
     "Искусство, фотография и дизайн", 
     "Музыка", 
     "Хореография", 
@@ -54,6 +54,7 @@ const listItems = interests.map((interest) =>
       direction="column"
       alignItems="center"
       justifyContent="center" 
+      sx={{ paddingTop: 7 }}
     >
       <Typography>{interest}</Typography>
       <Slider
@@ -69,6 +70,8 @@ const listItems = interests.map((interest) =>
    
 )
 
+
+
 export default function SignUp() {
   let navigate = useNavigate();
   const handleSubmit = async (event) => {
@@ -82,6 +85,15 @@ export default function SignUp() {
     };
     //await axios.post("http://localhost:3002/api/user/signup", form, );  
     //navigate('/')
+  };
+
+  const handleFileSelected = (event) => {
+    var file = event.target.files[0];
+    
+    if (file) {
+        var imageUrl = URL.createObjectURL(file);        
+        document.getElementById('student_icon').src = imageUrl;
+    }
   };
 
   return (
@@ -139,10 +151,11 @@ export default function SignUp() {
                 spacing={0}
                 direction="column"
                 alignItems="center"
-                justifyContent="center"                
+                justifyContent="center"     
+                sx={{ paddingTop: 7 }}           
               >
-                <label for="image-upload" class="upload-label"><img src={student_icon} /></label> 
-                <input type="file" id="image-upload" name="image" accept="image/*" class="upload-input"/> 
+                <label for="image-upload" class="upload-label"><img src={student_icon} id='student_icon'  width="200" height="200"/></label> 
+                <input type="file" id="image-upload" name="image" accept="image/*" onChange={handleFileSelected} class="upload-input"/> 
               </Grid>
               {listItems}
             </Grid>
