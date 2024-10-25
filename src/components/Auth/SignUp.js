@@ -3,15 +3,13 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
-import Input from '@mui/material/Input';
 import { Slider } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import axios from 'axios';
+//import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import student_icon from './student-icon.png';
 import "./SignUp.css";
@@ -35,22 +33,28 @@ const interests = [
 
 const marks = [
   {
-    value: 0,
-    label: 'Крайне не интересует',
+    value: 0.1,
+    label: 'Не интересует',
   },
   {
     value: 0.5,
     label: 'Нейтрально',
   },
   {
-    value: 1,
+    value: 0.9,
     label: 'Захватывает',
   },
 ]
 
 const listItems = interests.map((interest) => 
   
-    <Grid item xs={12}>
+    <Grid
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justifyContent="center" 
+    >
       <Typography>{interest}</Typography>
       <Slider
         aria-label={interest}
