@@ -1,3 +1,7 @@
 .upload-input { 
     display: none; 
 }
+
+.basic-multi-select {
+    width: 100%;
+}
