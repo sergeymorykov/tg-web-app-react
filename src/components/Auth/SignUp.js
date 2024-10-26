@@ -11,7 +11,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import student_icon from './student-icon.png';
 import "./SignUp.css";
-import {decode as base64_decode, encode as base64_encode} from 'base-64';
 import {useTelegram} from "../../hooks/useTelegram";
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';

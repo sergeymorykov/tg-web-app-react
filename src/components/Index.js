@@ -9,7 +9,7 @@ import {
     Routes,
     Route
 } from "react-router-dom";
-import { Edit } from "@material-ui/icons";
+import UserList from "./User/UserList";
 
 
 
@@ -24,6 +24,7 @@ export default function Index(props) {
                     <Route path="/events" element={<EventList setIsLoggedIn={setLoggedIn} />} />
                     <Route path="/eventform" element={<EventForm/>} />
                     <Route path="/view" element={<View setIsLoggedIn={setLoggedIn} />}/>
+                    <Route path="/user-list" element={<UserList setIsLoggedIn={setLoggedIn} />}/>
                     <Route path="/edit-profile" element={<EditProfile setIsLoggedIn={setLoggedIn} />}/>
                 </Routes>                
             </BrowserRouter>
