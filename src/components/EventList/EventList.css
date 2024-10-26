@@ -1,0 +1,12 @@
+.event-list-container {
+    margin-top: 32px; /* Отступ сверху для списка событий */
+}
+
+.event-list-title {
+    font-size: 1.5rem; /* Размер шрифта для заголовка списка событий */
+    margin-bottom: 16px; /* Отступ снизу для заголовка */
+}
+
+.grid-container {
+    margin-top: 16px; /* Отступ сверху для сетки событий */
+}
