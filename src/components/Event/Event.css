@@ -1,0 +1,33 @@
+.event-container {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    margin-bottom: 40px; /* Отступ между карточками событий */
+    transition: box-shadow 0.3s ease; /* Эффект наведения */
+}
+
+.event-container:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Эффект наведения */
+}
+
+.event-title {
+    font-size: 1.25rem; /* Размер шрифта для названия события */
+    font-weight: bold;
+}
+
+.event-description {
+    margin: 8px 0; /* Отступ для описания */
+}
+
+.event-date {
+    font-size: 0.875rem; /* Размер шрифта для даты события */
+    color: #666; /* Цвет для текста даты */
+}
+
+.event-button {
+    margin-top: 16px; /* Отступ сверху для кнопки */
+}
