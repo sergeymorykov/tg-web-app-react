@@ -15,61 +15,51 @@ import {decode as base64_decode, encode as base64_encode} from 'base-64';
 import {useTelegram} from "../../hooks/useTelegram";
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
+import { useState } from 'react';
+import {useConstant} from '../Constant';
 
 const animatedComponents = makeAnimated()
 const theme = createTheme();
 
-const interests = [
-  {value:"Стартапы, поиск команды и нетворкинг", label:"Стартапы, поиск команды и нетворкинг"},
-  {value:"Искусство, фотография и дизайн", label:"Искусство, фотография и дизайн"},
-  {value:"Музыка", label:"Музыка"},
-  {value:"Хореография", label:"Хореография"},
-  {value:"Спорт, фитнес и ЗОЖ", label:"Спорт, фитнес и ЗОЖ"},
-  {value:"Литература и история", label:"Литература и история"},
-  {value:"Политика, социология, активизм и дебаты", label:"Политика, социология, активизм и дебаты"},
-  {value:"Кино и другое многомодальное искусство", label:"Кино и другое многомодальное искусство"},
-  {value:"Психология и психическое здоровье", label:"Психология и психическое здоровье"},
-  {value:"Соревновательные видеоигры", label:"Соревновательные видеоигры"},
-  {value:"Новые технологии, ИИ, техника", label:"Новые технологии, ИИ, техника"},
-  {value:"Математика, физика и информатика", label:"Математика, физика и информатика"},
-  {value:"Математика, физика и информатика", label:"Математика, физика и информатика"},
-  {value :"Волонтерство и благотворительность", label: "Волонтерство и благотворительность"},
-  {value :"Настольные игры", label: "Настольные игры"},
-  {value :"Путешествия и туризм", label: "Путешествия и туризм"},
-  {value :"Английский (иностранные языки)", label: "Английский (иностранные языки)"}
-];
+
 
 
 export default function SignUp() {
+
+  const [image, setImage] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(null);
+  const handleChange = (selectedOption) => {
+    setSelectedOption(selectedOption);
+  };
+  const {interests} = useConstant();
   const {user_id, onClose} = useTelegram();
-  var imageFile = null;
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const form = {
       id : user_id,
       fullname : data.get('lname')  +' '+ data.get('fname'),
-      photo: imageFile
+      photo: image,
+      interests: selectedOption?.map((item) => item.value)
     };
     
-
     console.log(form);    
     //await axios.post("http://localhost:3002/api/user/signup", form, );  
     onClose()
   };
 
   const handleFileSelected = (event) => {
-    var file = event.target.files[0];
+    let file = event.target.files[0];
     
     if (file) {
         const reader = new FileReader();
         
         // Событие завершения чтения файла
         reader.onload = function(e) {
-            imageFile = e.target.result;
+          setImage(e.target.result);
         };
         reader.readAsDataURL(file);
-        var imageUrl = URL.createObjectURL(file);        
+        let imageUrl = URL.createObjectURL(file);        
         document.getElementById('student_icon').src = imageUrl;
     }
   };
@@ -122,8 +112,8 @@ export default function SignUp() {
                 justifyContent="center"     
                 sx={{ paddingTop: 7, paddingLeft: 3 }}           
               >
-                <label for="image-upload" class="upload-label"><img src={student_icon} id='student_icon'  width="200" height="200"/></label> 
-                <input type="file" id="image-upload" name="image" accept="image/*" onChange={handleFileSelected} class="upload-input"/> 
+                <label htmlFor="image-upload" className="upload-label"><img src={student_icon} id='student_icon'  width="200" height="200"/></label> 
+                <input type="file" id="image-upload" name="image" accept="image/*" onChange={handleFileSelected} className="upload-input"/> 
               </Grid>        
               <Grid
                 container
@@ -131,14 +121,16 @@ export default function SignUp() {
                 direction="column"
                 alignItems="center"
                 justifyContent="center"     
-                sx={{ paddingTop: 7, paddingLeft: 3 }}           
+                sx={{ paddingTop: 7 }}           
               >
               <Select
+                    onChange={handleChange}
                     closeMenuOnSelect={false}
                     components={animatedComponents}
                     isMulti
                     options={interests}
-                    width="100%"
+                    className="basic-multi-select"
+                    classNamePrefix="select"
                   />
               </Grid>
               <Button
