@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { List, ListItem, ListItemAvatar, ListItemText, Avatar, Typography, Box } from '@mui/material';
+import { Grid, Avatar, Typography, Box } from '@mui/material';
 import axios from 'axios';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
