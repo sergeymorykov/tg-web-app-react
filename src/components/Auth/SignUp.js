@@ -14,7 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import student_icon from './student-icon.png';
 import "./SignUp.css";
 import {decode as base64_decode, encode as base64_encode} from 'base-64';
-import { Phone } from '@material-ui/icons';
+import {useTelegram} from "../../hooks/useTelegram";
 
 const theme = createTheme();
 
@@ -73,8 +73,9 @@ const listItems = interests.map((interest) =>
    
 )
 
+
 export default function SignUp() {
-  let navigate = useNavigate();
+  const {onClose} = useTelegram();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -87,9 +88,8 @@ export default function SignUp() {
       photo: base64_encode(data.get('image')),
       interests: interestObject
     };
-    console.log(form)
+    onClose()
     //await axios.post("http://localhost:3002/api/user/signup", form, );  
-    //navigate('/')
   };
 
   const handleFileSelected = (event) => {
