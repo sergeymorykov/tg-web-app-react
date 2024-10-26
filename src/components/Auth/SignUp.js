@@ -41,10 +41,8 @@ export default function SignUp() {
       fullname : data.get('lname')  +' '+ data.get('fname'),
       photo: image,
       interests: selectedOption?.map((item) => item.value)
-    };
-    
-    console.log(form);    
-    //await axios.post("http://localhost:3002/api/user/signup", form, );  
+    };       
+    await axios.post("http://127.0.0.1:5000/users_reg", form);  
     onClose()
   };
 
