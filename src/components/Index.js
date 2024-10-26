@@ -2,6 +2,8 @@ import SignUp from "./Auth/SignUp";
 import View from "./User/View";
 import EditProfile from "./User/Edit";
 import Header from "./Navbar/Header";
+import EventList from "./EventList/EventList";
+import EventForm from "./EventForm/EventForm";
 import {
     BrowserRouter,
     Routes,
