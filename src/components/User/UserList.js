@@ -31,16 +31,21 @@ function UserList() {
             <Typography variant="h4" gutterBottom>
                 Users List
             </Typography>
-            <List>
+            <Grid container>
                 {users.map(user => (
-                    <ListItem key={user.id}>
-                        <Avatar src={user.photo} />
+                    <Grid key={user.id}>
+                        <Avatar
+                            alt="Remy Sharp"
+                            src={user.photo}
+                            sx={{ width: 200, height: 200 }}
+                        >
+                        </Avatar>            
                         <Typography component="h1" variant="h5">
                             {user.fullname}                
-                        </Typography>  
-                    </ListItem>
+                        </Typography>     
+                    </Grid>
                 ))}
-            </List>
+            </Grid>
         </Box>
     );
 }
