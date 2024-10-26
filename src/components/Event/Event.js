@@ -5,7 +5,7 @@ import './Event.css'; // Импорт стилей
 import { useTelegram } from '../../hooks/useTelegram';
 
 const Event = ({ event }) => {
-    const { chat_id } = useTelegram();
+    const { user_id } = useTelegram();
     const handleParticipate = async () => {
         
 
@@ -13,7 +13,7 @@ const Event = ({ event }) => {
 
         try {
             const response = await axios.post('http://localhost:5000/register_event', {
-                user_id: chat_id,
+                user_id: user_id,
                 event_name: eventName,
             });
 
