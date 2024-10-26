@@ -13,6 +13,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import student_icon from './student-icon.png';
 import "./SignUp.css";
+import {decode as base64_decode, encode as base64_encode} from 'base-64';
+import { Phone } from '@material-ui/icons';
 
 const theme = createTheme();
 
@@ -54,10 +56,11 @@ const listItems = interests.map((interest) =>
       direction="column"
       alignItems="center"
       justifyContent="center" 
-      sx={{ paddingTop: 7 }}
+      sx={{ paddingTop: interests.indexOf(interest) === 0 ?  1 : 7 , paddingLeft: 3  }}  
     >
       <Typography>{interest}</Typography>
       <Slider
+        name={interest}
         aria-label={interest}
         defaultValue={0.5}
         step={0.01}
@@ -70,19 +73,21 @@ const listItems = interests.map((interest) =>
    
 )
 
-
-
 export default function SignUp() {
   let navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log(data);
+    let interestObject = {}
+    interests.map((interest) =>
+      interestObject[interest] = data.get(interest)
+    )
     const form = {
-      fullname : data.get('fname') +' '+ data.get('lname'),
-      email: data.get('email'),
-      password: data.get('password')
+      fullname : data.get('lname')  +' '+ data.get('fname'),
+      photo: base64_encode(data.get('image')),
+      interests: interestObject
     };
+    console.log(form)
     //await axios.post("http://localhost:3002/api/user/signup", form, );  
     //navigate('/')
   };
@@ -114,7 +119,7 @@ export default function SignUp() {
             Регистрация
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-            <Grid container spacing={2}>
+            <Grid container spacing={2} >
               <Grid item xs={12} sm={6}>
                 <TextField
                   required
@@ -136,26 +141,28 @@ export default function SignUp() {
                   autoFocus
                 />
               </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email"
-                  name="email"
-                  autoComplete="email"
-                />
-              </Grid>
               <Grid
                 container
                 spacing={0}
                 direction="column"
                 alignItems="center"
                 justifyContent="center"     
-                sx={{ paddingTop: 7 }}           
+                sx={{ paddingTop: 7, paddingLeft: 3 }}           
               >
                 <label for="image-upload" class="upload-label"><img src={student_icon} id='student_icon'  width="200" height="200"/></label> 
                 <input type="file" id="image-upload" name="image" accept="image/*" onChange={handleFileSelected} class="upload-input"/> 
+              </Grid>
+              <Grid
+                container
+                spacing={0}
+                direction="column"
+                alignItems="center"
+                justifyContent="center" 
+                sx={{ paddingTop: 3 }} 
+              >
+                <Typography component="h1" variant="h5">
+                  Интересы
+                </Typography>
               </Grid>
               {listItems}
             </Grid>
