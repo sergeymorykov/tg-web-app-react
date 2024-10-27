@@ -42,7 +42,7 @@ export default function SignUp() {
       photo: image,
       interests: selectedOption?.map((item) => item.value)
     };       
-    await axios.post("https://sergeymorykov-tg-web-backend-842d.twc1.net/users_reg", form); 
+    await axios.post("https://sergeymorykov-tg-web-backend-1a6e.twc1.net/users_reg", form); 
     delete form.photo;
     window.Telegram.WebApp.sendData(JSON.stringify(form)); 
     onClose()
