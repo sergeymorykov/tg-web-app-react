@@ -4,6 +4,8 @@ import EditProfile from "./User/Edit";
 import Header from "./Navbar/Header";
 import EventList from "./EventList/EventList";
 import EventForm from "./EventForm/EventForm";
+import EditProfile from "./User/Edit";
+import ListUsers from "./User/ListUsers";
 import {
     BrowserRouter,
     Routes,
@@ -26,6 +28,7 @@ export default function Index(props) {
                     <Route path="/view" element={<View setIsLoggedIn={setLoggedIn} />}/>
                     <Route path="/user-list" element={<UserList setIsLoggedIn={setLoggedIn} />}/>
                     <Route path="/edit-profile" element={<EditProfile setIsLoggedIn={setLoggedIn} />}/>
+                    <Route path="/users" element={<ListUsers setIsLoggedIn={setLoggedIn} />}/>
                 </Routes>                
             </BrowserRouter>
         </div>
