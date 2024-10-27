@@ -8,7 +8,7 @@ import { useTelegram } from '../../hooks/useTelegram';
 const theme = createTheme();
 function UserList() {
     const [users, setUsers] = useState([]);
-    const user_id = useTelegram();
+    const {user_id} = useTelegram();
     useEffect(() => {
         axios.get('http://127.0.0.1:5000/users')
             .then(response => {
@@ -18,8 +18,7 @@ function UserList() {
                 console.error('Error fetching users:', error);
             });
     }, []);
-
-
+    
     return (
         <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -54,7 +53,7 @@ function UserList() {
                                         className='dislike'
                                         type="button"
                                         onClick={() => {
-                                            axios.post('http://localhost:5000/dislike', {critic_id: user_id, user_id: user.id, rating: 0});
+                                            axios.post('http://localhost:5000/dislike', {critic_id: user_id, user_id: user.user_id, rating: 0});
                                         }}
                                         variant="contained"
                                         sx={{ mt: 3, mb: 2 }}                                        
