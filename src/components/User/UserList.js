@@ -10,7 +10,7 @@ function UserList() {
     const [users, setUsers] = useState([]);
     const {user_id} = useTelegram();
     useEffect(() => {
-        axios.get('http://127.0.0.1:5000/users')
+        axios.get('https://sergeymorykov-tg-web-backend-1a6e.twc1.net/users')
             .then(response => {
                 setUsers(response.data);
             })
