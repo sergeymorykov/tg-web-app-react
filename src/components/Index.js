@@ -4,8 +4,7 @@ import EditProfile from "./User/Edit";
 import Header from "./Navbar/Header";
 import EventList from "./EventList/EventList";
 import EventForm from "./EventForm/EventForm";
-import EditProfile from "./User/Edit";
-import ListUsers from "./User/ListUsers";
+import ListUsers from "./ListUsers/ListUsers";
 import {
     BrowserRouter,
     Routes,
