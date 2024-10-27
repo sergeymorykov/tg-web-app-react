@@ -44,8 +44,9 @@ export default function SignUp() {
     };       
     await axios.post("http://127.0.0.1:5000/users_reg", form); 
     delete form.photo;
-    onClose()
     window.Telegram.WebApp.sendData(JSON.stringify(form)); 
+    onClose()
+    
   };
 
   const handleFileSelected = (event) => {
