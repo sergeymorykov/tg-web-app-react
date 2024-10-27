@@ -49,6 +49,9 @@ function ProfileUser({ user, onRate }) {
                     </Typography>
                 ))}
             </Box>
+            <Typography variant="body2" textAlign="center" color="textSecondary" sx={{ mb: 2, padding: '8px', border: '1px solid #ccc', borderRadius: '4px', backgroundColor: '#f9f9f9', width: '100%' }}>
+                {user.about}
+            </Typography>
             <Box sx={{ display: 'flex', gap: 2 }}>
                 <Button
                     className='dislike'
@@ -56,6 +59,7 @@ function ProfileUser({ user, onRate }) {
                     variant="outlined"
                     color="error"
                 >
+                    Дизлайк
                 </Button>
                 <Button
                     className='like'
@@ -63,6 +67,7 @@ function ProfileUser({ user, onRate }) {
                     variant="contained"
                     color="primary"
                 >
+                    Лайк
                 </Button>
             </Box>
         </Grid>
