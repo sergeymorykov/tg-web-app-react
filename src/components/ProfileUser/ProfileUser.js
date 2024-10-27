@@ -59,7 +59,6 @@ function ProfileUser({ user, onRate }) {
                     variant="outlined"
                     color="error"
                 >
-                    Дизлайк
                 </Button>
                 <Button
                     className='like'
@@ -67,7 +66,6 @@ function ProfileUser({ user, onRate }) {
                     variant="contained"
                     color="primary"
                 >
-                    Лайк
                 </Button>
             </Box>
         </Grid>
