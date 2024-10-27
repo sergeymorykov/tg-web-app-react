@@ -53,7 +53,7 @@ function UserList() {
                                         className='dislike'
                                         type="button"
                                         onClick={() => {
-                                            axios.post('sergeymorykov-tg-web-backend-842d.twc1.net/dislike', {critic_id: user_id, user_id: user.id_user, rating: 0});
+                                            axios.post('https://sergeymorykov-tg-web-backend-842d.twc1.net/dislike', {critic_id: user_id, user_id: user.id_user, rating: 0});
                                         }}
                                         variant="contained"
                                         sx={{ mt: 3, mb: 2 }}                                        
@@ -66,7 +66,7 @@ function UserList() {
                                         type="button"
                                         
                                         onClick={() => {
-                                            axios.post('sergeymorykov-tg-web-backend-842d.twc1.net/like', {critic_id: user_id, user_id: user.id_user, rating: 1});
+                                            axios.post('https://sergeymorykov-tg-web-backend-842d.twc1.net/like', {critic_id: user_id, user_id: user.id_user, rating: 1});
                                         }}
                                         variant="contained"  
                                         sx={{ mt: 3, mb: 2 }}                                      

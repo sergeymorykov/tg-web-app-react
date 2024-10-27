@@ -12,7 +12,7 @@ const Event = ({ event }) => {
         const eventName = event.event_name; // Название события, которое передаем на сервер
 
         try {
-            const response = await axios.post('sergeymorykov-tg-web-backend-842d.twc1.net/register_event', {
+            const response = await axios.post('https://sergeymorykov-tg-web-backend-842d.twc1.net/register_event', {
                 user_id: user_id,
                 event_name: eventName,
             });
