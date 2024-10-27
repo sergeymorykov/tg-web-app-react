@@ -122,7 +122,7 @@ export default function SignUp() {
                 direction="column"
                 alignItems="center"
                 justifyContent="center"     
-                sx={{ paddingTop: 7 }}           
+                sx={{ paddingTop: 7,  ml: 3 }}           
               >
               <Select
                     onChange={handleChange}
@@ -132,14 +132,13 @@ export default function SignUp() {
                     options={interests}
                     className="basic-multi-select"
                     classNamePrefix="select"
-                    sx={{ mt: 3 }}
                   />
               </Grid>
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2, mt: 3 }}
+                sx={{ mt: 3, mb: 2, ml: 3 }}
               >
                 Регистрация
               </Button>    
