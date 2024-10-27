@@ -7,7 +7,7 @@ const EventList = () => {
     const [loading, setLoading] = useState(true); // Состояние для отслеживания загрузки
 
     const handleRedirect = () => {
-        window.location.href = 'http://localhost:3000/eventform';
+        window.location.href = 'https://sergeymorykov-tg-web-app-react-72ec.twc1.net/eventform';
     };
     // Функция для получения данных с сервера
     const fetchEvents = async () => {

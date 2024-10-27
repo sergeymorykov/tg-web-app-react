@@ -21,7 +21,7 @@ const EventForm = () => {
         try {
             const response = await axios.post('https://sergeymorykov-tg-web-backend-842d.twc1.net/add_event', eventData);
             console.log('Event added successfully:', response.data);
-            window.location.href = 'http://localhost:3000/events';
+            window.location.href = 'https://sergeymorykov-tg-web-app-react-72ec.twc1.net/events';
             // Можно перенаправить или сбросить форму после успешного добавления
         } catch (error) {
             console.error('Error adding event:', error);
