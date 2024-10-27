@@ -1,0 +1,10 @@
+/* UserList.css */
+.like {
+    background-color: #007bff !important;
+    color: white !important;
+}
+
+.dislike {
+    color: #f50057 !important;
+    border-color: #f50057 !important;
+}
