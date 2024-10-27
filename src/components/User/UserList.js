@@ -18,7 +18,9 @@ function UserList() {
                 console.error('Error fetching users:', error);
             });
     }, []);
-    
+
+    console.log(users);
+
     return (
         <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -37,7 +39,7 @@ function UserList() {
             <Box sx={{ mt: 3 }}>
                 <Grid container>      
                     {users.map(user => (
-                        <Grid key={user.id} sx={{ml: 13}}>
+                        <Grid key={user.id_user} sx={{ml: 13}}>
                             <Avatar
                                 alt="Remy Sharp"
                                 src={user.photo}
@@ -53,7 +55,7 @@ function UserList() {
                                         className='dislike'
                                         type="button"
                                         onClick={() => {
-                                            axios.post('http://localhost:5000/dislike', {critic_id: user_id, user_id: user.user_id, rating: 0});
+                                            axios.post('http://localhost:5000/dislike', {critic_id: user_id, user_id: user.id_user, rating: 0});
                                         }}
                                         variant="contained"
                                         sx={{ mt: 3, mb: 2 }}                                        
@@ -66,7 +68,7 @@ function UserList() {
                                         type="button"
                                         
                                         onClick={() => {
-                                            axios.post('http://localhost:5000/like', {critic_id: user_id, user_id: user.id, rating: 1});
+                                            axios.post('http://localhost:5000/like', {critic_id: user_id, user_id: user.id_user, rating: 1});
                                         }}
                                         variant="contained"  
                                         sx={{ mt: 3, mb: 2 }}                                      
