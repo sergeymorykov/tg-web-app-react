@@ -54,7 +54,7 @@ function UserList() {
                                         className='dislike'
                                         type="button"
                                         onClick={() => {
-                                            axios.post('http://127.0.0.1:5000/like', {critic_id: user_id, user_id: user.id, rating: 0});
+                                            axios.post('http://127.0.0.1:5000/dislike', {critic_id: user_id, user_id: user.id, rating: 0});
                                         }}
                                         variant="contained"
                                         sx={{ mt: 3, mb: 2 }}                                        
@@ -66,7 +66,7 @@ function UserList() {
                                         className='like'
                                         type="button"
                                         onClick={() => {
-                                            axios.post('http://127.0.0.1:5000/dislike', {critic_id: user_id, user_id: user.id, rating: 1});
+                                            axios.post('http://127.0.0.1:5000/like', {critic_id: user_id, user_id: user.id, rating: 1});
                                         }}
                                         variant="contained"  
                                         sx={{ mt: 3, mb: 2 }}                                      
