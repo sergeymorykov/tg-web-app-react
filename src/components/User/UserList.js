@@ -19,8 +19,6 @@ function UserList() {
             });
     }, []);
 
-    console.log(users);
-
     return (
         <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -46,10 +44,10 @@ function UserList() {
                                 sx={{ width: 200, height: 200}}
                             >
                             </Avatar>            
-                            <Typography component="h1" variant="h5" sx={{ml: 2, mr: 2}} textAlign={'center'}>
+                            <Typography component="h1" variant="h5" textAlign={'center'}>
                                 {user.fullname}                
                             </Typography>  
-                            <Grid container sx={{ml: 3}}>
+                            <Grid container>
                                 <Grid item xs={12} sm={6}>
                                     <Button
                                         className='dislike'
