@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Avatar, Typography, Box } from '@mui/material';
+import { Button, Container, Grid, Avatar, Typography, Box, CssBaseline } from '@mui/material';
 import axios from 'axios';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import './UserList.css';
+import { useTelegram } from '../../hooks/useTelegram';
 
 const theme = createTheme();
 function UserList() {
     const [users, setUsers] = useState([]);
-
+    const user_id = useTelegram();
     useEffect(() => {
         axios.get('http://127.0.0.1:5000/users')
             .then(response => {
@@ -20,6 +21,9 @@ function UserList() {
 
 
     return (
+        <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
         <Box
             sx={{
                 marginTop: 8,
@@ -28,25 +32,55 @@ function UserList() {
                 alignItems: 'center',
             }}
         >
-            <Typography variant="h4" gutterBottom>
-                Users List
+            <Typography component="h1" variant="h5" sx={{ml: 1}}>
+                Список пользователей
             </Typography>
-            <Grid container>
-                {users.map(user => (
-                    <Grid key={user.id}>
-                        <Avatar
-                            alt="Remy Sharp"
-                            src={user.photo}
-                            sx={{ width: 200, height: 200 }}
-                        >
-                        </Avatar>            
-                        <Typography component="h1" variant="h5">
-                            {user.fullname}                
-                        </Typography>     
-                    </Grid>
-                ))}
-            </Grid>
+            <Box sx={{ mt: 3 }}>
+                <Grid container>      
+                    {users.map(user => (
+                        <Grid key={user.id} sx={{ml: 13}}>
+                            <Avatar
+                                alt="Remy Sharp"
+                                src={user.photo}
+                                sx={{ width: 200, height: 200}}
+                            >
+                            </Avatar>            
+                            <Typography component="h1" variant="h5" sx={{ml: 2, mr: 2}} textAlign={'center'}>
+                                {user.fullname}                
+                            </Typography>  
+                            <Grid container sx={{ml: 3}}>
+                                <Grid item xs={12} sm={6}>
+                                    <Button
+                                        className='dislike'
+                                        type="button"
+                                        onClick={() => {
+                                            axios.post('http://127.0.0.1:5000/like', {critic_id: user_id, user_id: user.id, rating: 0});
+                                        }}
+                                        variant="contained"
+                                        sx={{ mt: 3, mb: 2 }}                                        
+                                    >
+                                    </Button> 
+                                </Grid>     
+                                <Grid item xs={12} sm={6}>
+                                    <Button
+                                        className='like'
+                                        type="button"
+                                        onClick={() => {
+                                            axios.post('http://127.0.0.1:5000/dislike', {critic_id: user_id, user_id: user.id, rating: 1});
+                                        }}
+                                        variant="contained"  
+                                        sx={{ mt: 3, mb: 2 }}                                      
+                                    >
+                                    </Button> 
+                                </Grid>                                                             
+                            </Grid>  
+                        </Grid>                        
+                    ))}
+                </Grid>
+            </Box>
         </Box>
+        </Container>
+        </ThemeProvider>
     );
 }
 

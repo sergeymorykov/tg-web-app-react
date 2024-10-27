@@ -1,0 +1,17 @@
+.like {
+    width: 64px;
+    height: 64px;
+    border: none;
+    background-image: url('./like.jpg');
+    background-size: cover;
+    color: #468cd2;
+}
+
+.dislike {
+    width: 64px;
+    height: 64px;
+    border: none;    
+    background-image: url('./dislike.jpg');
+    background-size: cover;
+    color: #468cd2;
+}
