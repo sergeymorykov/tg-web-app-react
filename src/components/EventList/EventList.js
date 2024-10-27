@@ -12,7 +12,7 @@ const EventList = () => {
     // Функция для получения данных с сервера
     const fetchEvents = async () => {
         try {
-            const response = await fetch('http://localhost:5000/get_event'); // Замените URL на ваш API
+            const response = await fetch('sergeymorykov-tg-web-backend-842d.twc1.net/get_event'); // Замените URL на ваш API
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }

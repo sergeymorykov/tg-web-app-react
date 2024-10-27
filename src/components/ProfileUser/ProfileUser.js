@@ -8,12 +8,12 @@ function ProfileUser({ user, onRate }) {
     const { user_id } = useTelegram();
 
     const handleLike = () => {
-        axios.post('http://localhost:5000/like', { critic_id: user_id, user_id: user.id_user, rating: 1 })
+        axios.post('sergeymorykov-tg-web-backend-842d.twc1.net/like', { critic_id: user_id, user_id: user.id_user, rating: 1 })
             .then(() => onRate()); // Переключаемся на следующего пользователя после лайка
     };
 
     const handleDislike = () => {
-        axios.post('http://localhost:5000/dislike', { critic_id: user_id, user_id: user.id_user, rating: 0 })
+        axios.post('sergeymorykov-tg-web-backend-842d.twc1.net/dislike', { critic_id: user_id, user_id: user.id_user, rating: 0 })
             .then(() => onRate()); // Переключаемся на следующего пользователя после дизлайка
     };
 
