@@ -1,10 +1,11 @@
-// ListUsers.js
 import React, { useEffect, useState } from 'react';
 import { Container, Typography, Box, CssBaseline, Paper } from '@mui/material';
 import axios from 'axios';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './ListUsers.css';
 import ProfileUser from '../ProfileUser/ProfileUser';
+import { useTelegram } from '../../hooks/useTelegram';
+import { SignalCellularConnectedNoInternet4BarSharp } from '@material-ui/icons';
 
 const theme = createTheme({
     palette: {
@@ -24,6 +25,8 @@ function ListUsers() {
     const [users, setUsers] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0); // индекс текущего пользователя
 
+    const { user_id } = useTelegram();
+
     useEffect(() => {
         axios.get('https://sergeymorykov-tg-web-backend-1a6e.twc1.net/users')
             .then(response => {
@@ -34,9 +37,16 @@ function ListUsers() {
             });
     }, []);
 
+    const userIndex = users.findIndex(user => user.id_tg === user_id);
+
     const handleNextUser = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % users.length);
+        setCurrentIndex((prevIndex) => 
+            (prevIndex + 1) % users.length !== userIndex  
+            ? (prevIndex + 1) % users.length 
+            : (prevIndex + 2) % users.length
+        );
     };
+    
 
     if (users.length === 0) {
         return <Typography>Загрузка пользователей...</Typography>;
